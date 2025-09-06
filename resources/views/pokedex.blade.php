@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">My Pok&eacute;dex</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/') }}">My Pok&eacute;dex</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Favorites</a>
@@ -44,7 +44,7 @@
         <div class="row" style="height: 85vh; width: 100%;">
             <div class="col-6" style="height: 100%; padding-left:0; margin-left:0;">
                 <div style="height: 100%; overflow-y: auto; border: 3px solid black;">
-                    <div class="row row-cols-2 row-cols-md-4 g-2" style="margin: 0px 8px 0px 8px;">
+                    <div class="row row-cols-2 row-cols-md-4 g-2" style="margin: 0px 8px 8px 8px;">
                     @foreach ($pokemonData as $index => $pokemon)
                         <div class="col">
                             <div class="card pokemon-list-item h-100 shadow-lg text-center" data-index="{{ $index }}"
