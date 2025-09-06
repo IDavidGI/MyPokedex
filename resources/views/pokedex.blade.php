@@ -13,7 +13,7 @@
 <body class="bg-light">
     <nav style="height: 100px" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="margin-left: 30px">
+            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 30px">
                 <img src="{{ asset('images/pokeball.png') }}" width="30" height="30">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -55,7 +55,6 @@
                                     <div class="card-title" style="font-size:1.2em; font-weight:bold;">{{ $pokemon['name'] }}
                                     </div>
                                     <div class="pokemon-type-list" style="margin-top:8px; min-height:28px;">
-                                        <span class="text-muted" style="font-size:0.95em;">Type loading...</span>
                                     </div>
                                 </div>
                             </div>

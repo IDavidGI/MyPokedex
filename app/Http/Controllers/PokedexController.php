@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
-class HomeController extends Controller
+class PokedexController extends Controller
 {
-    public function index()
+    public function loadPokemon()
     {
         $pokemonData = Cache::get('original_151_pokemon');
         if (!$pokemonData) {
             $pokemonData = $this->fetchOriginal151Pokemon();
             Cache::put('original_151_pokemon', $pokemonData, 60 * 24 * 7);
         }
-        return view('welcome', ['pokemonData' => $pokemonData]);
+        return view('pokedex', ['pokemonData' => $pokemonData]);
     }
 
     protected function fetchOriginal151Pokemon()
@@ -24,6 +24,7 @@ class HomeController extends Controller
         $pokemonList = $data['results'] ?? [];
         $pokemonData = [];
         foreach ($pokemonList as $index => $pokemon) {
+            Log::info($pokemon);
             $id = $index + 1;
             $pokemonData[] = [
                 'name' => ucfirst($pokemon['name']),
