@@ -37,7 +37,7 @@ document.querySelectorAll('.pokemon-list-item').forEach(item => {
     });
 });
 
-// Fetch and display types under each Pokémon card in the scroll grid
+// Fetch and display the types of the pokemon
 document.querySelectorAll('.pokemon-list-item').forEach(item => {
     const typeDiv = item.querySelector('.pokemon-type-list');
     const url = item.getAttribute('data-url');

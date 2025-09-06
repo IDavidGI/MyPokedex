@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Original 151 Pokémon</title>
+    <title>MyPok&eacute;dex</title>
     <link rel="icon" type="image/png" href="{{ asset('images/pokeball.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/types.css') }}">
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">My Pokedex</a>
+                        <a class="nav-link active" aria-current="page" href="#">My Pok&eacute;dex</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Favorites</a>
@@ -42,9 +42,9 @@
     </nav>
     <div class="container-fluid" style="padding-left:50px; margin-left:0px;">
         <div class="row" style="height: 85vh; width: 100%;">
-            <div class="col-6"
-                style="overflow-y: auto; height: 100%; border-right: 1px solid #ddd; padding-left:0; margin-left:0;">
-                <div class="row row-cols-2 row-cols-md-4 g-2">
+            <div class="col-6" style="height: 100%; padding-left:0; margin-left:0;">
+                <div style="height: 100%; overflow-y: auto; border: 3px solid black;">
+                    <div class="row row-cols-2 row-cols-md-4 g-2" style="margin: 0px 8px 0px 8px;">
                     @foreach ($pokemonData as $index => $pokemon)
                         <div class="col">
                             <div class="card pokemon-list-item h-100 shadow-lg text-center" data-index="{{ $index }}"
@@ -62,6 +62,7 @@
                     @endforeach
                 </div>
             </div>
+        </div>
             <div class="col-6 d-flex align-items-center justify-content-center" style="height: 100%;">
                 <div id="pokemon-details" style="width:100%; max-width:400px;"></div>
             </div>
