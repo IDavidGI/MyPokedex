@@ -1,3 +1,24 @@
+:root {
+    --type-normal: #A8A77A;
+    --type-fire: #EE8130;
+    --type-water: #6390F0;
+    --type-electric: #F7D02C;
+    --type-grass: #7AC74C;
+    --type-ice: #96D9D6;
+    --type-fighting: #C22E28;
+    --type-poison: #A33EA1;
+    --type-ground: #E2BF65;
+    --type-flying: #A98FF3;
+    --type-psychic: #F95587;
+    --type-bug: #A6B91A;
+    --type-rock: #B6A136;
+    --type-ghost: #735797;
+    --type-dragon: #6F35FC;
+    --type-dark: #705746;
+    --type-steel: #B7B7CE;
+    --type-fairy: #D685AD;
+}
+
 .type-badge {
     color: #fff;
     padding: 0.25em 0.75em;
@@ -6,21 +27,21 @@
     font-size: 0.9em;
     display: inline-block;
 }
-.type-normal { background: #A8A77A; }
-.type-fire { background: #EE8130; }
-.type-water { background: #6390F0; }
-.type-electric { background: #F7D02C; }
-.type-grass { background: #7AC74C; }
-.type-ice { background: #96D9D6; }
-.type-fighting { background: #C22E28; }
-.type-poison { background: #A33EA1; }
-.type-ground { background: #E2BF65; }
-.type-flying { background: #A98FF3; }
-.type-psychic { background: #F95587; }
-.type-bug { background: #A6B91A; }
-.type-rock { background: #B6A136; }
-.type-ghost { background: #735797; }
-.type-dragon { background: #6F35FC; }
-.type-dark { background: #705746; }
-.type-steel { background: #B7B7CE; }
-.type-fairy { background: #D685AD; }
+.type-normal { background: var(--type-normal); }
+.type-fire { background: var(--type-fire); }
+.type-water { background: var(--type-water); }
+.type-electric { background: var(--type-electric); }
+.type-grass { background: var(--type-grass); }
+.type-ice { background: var(--type-ice); }
+.type-fighting { background: var(--type-fighting); }
+.type-poison { background: var(--type-poison); }
+.type-ground { background: var(--type-ground); }
+.type-flying { background: var(--type-flying); }
+.type-psychic { background: var(--type-psychic); }
+.type-bug { background: var(--type-bug); }
+.type-rock { background: var(--type-rock); }
+.type-ghost { background: var(--type-ghost); }
+.type-dragon { background: var(--type-dragon); }
+.type-dark { background: var(--type-dark); }
+.type-steel { background: var(--type-steel); }
+.type-fairy { background: var(--type-fairy); }
