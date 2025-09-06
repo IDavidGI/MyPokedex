@@ -1,0 +1,26 @@
+.type-badge {
+    color: #fff;
+    padding: 0.25em 0.75em;
+    border-radius: 1em;
+    margin-right: 0.25em;
+    font-size: 0.9em;
+    display: inline-block;
+}
+.type-normal { background: #A8A77A; }
+.type-fire { background: #EE8130; }
+.type-water { background: #6390F0; }
+.type-electric { background: #F7D02C; }
+.type-grass { background: #7AC74C; }
+.type-ice { background: #96D9D6; }
+.type-fighting { background: #C22E28; }
+.type-poison { background: #A33EA1; }
+.type-ground { background: #E2BF65; }
+.type-flying { background: #A98FF3; }
+.type-psychic { background: #F95587; }
+.type-bug { background: #A6B91A; }
+.type-rock { background: #B6A136; }
+.type-ghost { background: #735797; }
+.type-dragon { background: #6F35FC; }
+.type-dark { background: #705746; }
+.type-steel { background: #B7B7CE; }
+.type-fairy { background: #D685AD; }
