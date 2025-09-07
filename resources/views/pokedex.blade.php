@@ -1,50 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyPok&eacute;dex</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/pokeball.png') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/types.css') }}">
-</head>
-
+@extends('layouts.app')
+@section('content')
 <body class="bg-light">
-    <nav style="height: 100px" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 30px">
-                <img src="{{ asset('images/pokeball.png') }}" width="30" height="30">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/') }}">My Pok&eacute;dex</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Favorites</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item" style="margin-right: 30px;">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="container-fluid" style="padding-left:50px; margin-left:0px;">
         <div class="row" style="height: 85vh; width: 100%;">
             <div class="col-8" style="height: 100%; padding-left:0; margin-left:0; width:65%; max-width:65vw; flex:0 0 65%;">
-                <div class="d-flex align-items-center mb-3" style="gap: 16px;">
-                    <input id="pokemon-search" type="text" class="form-control" placeholder="Search Pokémon by name..." style="max-width: 220px;">
+                <div class="d-flex align-items-center mb-3" style="gap: 12px;">
+                    <input id="pokemon-search" type="text" class="form-control" placeholder="Search Pokémon by name..." style="max-width: 220px;">  
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             Filter by Type
@@ -70,9 +31,13 @@
                             <li><a class="dropdown-item type-filter-option" href="#" data-type="fairy">Fairy</a></li>
                         </ul>
                     </div>
-                    <div class="flex-grow-1 ms-3" style="min-width:200px; max-width:700px;">
+                    <button id="favorites-filter-btn" class="btn btn-warning" type="button">Favorites</button>
+                    <div class="flex-grow-1" style="min-width:200px; max-width:700px;">
                         <div class="progress" style="height: 28px; background-color: #eee;">
-                                <div id="found-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%; font-weight: bold; font-size: 1em;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="151">0 / 151 Found</div>
+                                <div style="position: relative; width: 100%; height: 100%;">
+                                    <div id="found-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%; height: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="151"></div>
+                                    <span id="found-progress-text" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1em; color: #ffff; pointer-events: none;">0 / 151 Found</span>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -112,6 +77,6 @@
         const pokemonData = @json($pokemonData);
     </script>
     <script src="{{ asset('js/pokemondetails.js') }}"></script>
-</body>
-
-</html>
+    <script src="{{ asset('js/pokemonfavorites.js') }}"></script>
+    <script src="{{ asset('js/pokemonfilter.js') }}"></script>
+@endsection

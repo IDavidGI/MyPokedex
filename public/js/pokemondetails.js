@@ -1,5 +1,18 @@
 const detailsDiv = document.getElementById('pokemon-details');
 
+document.querySelectorAll('.pokemon-list-item').forEach(item => {
+    item.addEventListener('click', function () {
+        fetchDetails(this.dataset.url);
+        const pokeName = this.querySelector('.card-title').textContent.trim().toLowerCase();
+        //after fetching details, add to found list if not already present
+        if (!foundPokemon.includes(pokeName)) {
+            foundPokemon.push(pokeName);
+            localStorage.setItem(foundKey, JSON.stringify(foundPokemon));
+            updateProgressBar();
+        }
+    });
+});
+
 async function fetchDetails(url) {
     try {
         const res = await fetch(url);
@@ -70,23 +83,13 @@ function updateProgressBar() {
     const percent = Math.round((foundCount / 151) * 100);
     bar.style.width = percent + '%';
     bar.setAttribute('aria-valuenow', foundCount);
-    bar.textContent = `${foundCount} / 151 Found`;
     bar.classList.toggle('bg-success', foundCount > 0);
     bar.classList.toggle('bg-secondary', foundCount === 0);
+    var textSpan = document.getElementById('found-progress-text');
+    if (textSpan) {
+        textSpan.textContent = `${foundCount} / 151 Found`;
+    }
 }
-
-document.querySelectorAll('.pokemon-list-item').forEach(item => {
-    item.addEventListener('click', function () {
-        fetchDetails(this.dataset.url);
-        const pokeName = this.querySelector('.card-title').textContent.trim().toLowerCase();
-        //after fetching details, add to found list if not already present
-        if (!foundPokemon.includes(pokeName)) {
-            foundPokemon.push(pokeName);
-            localStorage.setItem(foundKey, JSON.stringify(foundPokemon));
-            updateProgressBar();
-        }
-    });
-});
 
 document.addEventListener('DOMContentLoaded', updateProgressBar);
 
@@ -105,62 +108,4 @@ document.querySelectorAll('.pokemon-list-item').forEach(item => {
                 typeDiv.innerHTML = `<span class='text-danger'>Type error</span>`;
             });
     }
-});
-
-function setupFavoriteButtonListeners() {
-    document.querySelectorAll('.favorite-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const star = btn.querySelector('.favorite-star');
-            if (star.innerHTML == '&#9733;' || star.innerHTML === '★') {
-                //if star is filled, unfill it
-                star.innerHTML = '&#9734;';
-                star.style.color = '#FFD700';
-            } else {
-                star.innerHTML = '&#9733;';
-                star.style.color = '#FFD700';
-            }
-        });
-    });
-}
-
-window.onload = setupFavoriteButtonListeners;
-
-//searching and filtering functionality on type and name
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('pokemon-search');
-    const typeMenu = document.getElementById('type-filter-menu');
-    const typeDropdownBtn = document.getElementById('typeDropdown');
-    let selectedType = '';
-
-    function filterPokemon() {
-        const searchText = searchInput.value.trim().toLowerCase();
-        document.querySelectorAll('.pokemon-list-item').forEach(card => {
-            const name = card.querySelector('.card-title').textContent.trim().toLowerCase();
-            let matchesSearch = name.includes(searchText);
-            let matchesType = true;
-            if (selectedType) {
-                const typeBadges = card.querySelectorAll('.type-badge');
-                matchesType = Array.from(typeBadges).some(badge => badge.classList.contains('type-' + selectedType));
-            }
-            card.parentElement.style.display = (matchesSearch && matchesType) ? '' : 'none';
-        });
-    }
-
-    function updateTypeButtonText() {
-        if (!selectedType) {
-            typeDropdownBtn.textContent = 'Filter by Type';
-        } else {
-            typeDropdownBtn.textContent = selectedType.charAt(0).toUpperCase() + selectedType.slice(1);
-        }
-    }
-
-    searchInput.addEventListener('input', filterPokemon);
-    typeMenu.querySelectorAll('.type-filter-option').forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.preventDefault();
-            selectedType = this.getAttribute('data-type');
-            updateTypeButtonText();
-            filterPokemon();
-        });
-    });
 });
