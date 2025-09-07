@@ -53,3 +53,21 @@ document.querySelectorAll('.pokemon-list-item').forEach(item => {
             });
     }
 });
+
+function setupFavoriteButtonListeners() {
+    document.querySelectorAll('.favorite-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const star = btn.querySelector('.favorite-star');
+            if (star.innerHTML === '&#9733;') {
+                //if star is filled, unfill it
+                star.innerHTML = '&#9734;';
+                star.style.color = '#bbb';
+            } else {
+                star.innerHTML = '&#9733;';
+                star.style.color = '#FFD700';
+            }
+        });
+    });
+}
+
+window.onload = setupFavoriteButtonListeners;

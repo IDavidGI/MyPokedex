@@ -47,8 +47,11 @@
                     <div class="row row-cols-2 row-cols-md-4 g-2" style="margin: 0px 8px 8px 8px;">
                     @foreach ($pokemonData as $index => $pokemon)
                         <div class="col">
-                            <div class="card pokemon-list-item h-100 shadow-lg text-center" data-index="{{ $index }}"
+                            <div class="card pokemon-list-item h-100 shadow-lg text-center position-relative" data-index="{{ $index }}"
                                 data-url="{{ $pokemon['url'] }}" style="cursor:pointer; min-height:220px; font-size:1.15em;">
+                                <button class="favorite-btn" style="position:absolute; top:10px; right:10px; background:transparent; border:none; z-index:3; font-size:1.5em; color:#FFD700;" title="Favorite">
+                                    <span class="favorite-star" data-index="{{ $index }}">&#9734;</span>
+                                </button>
                                 <img src="{{ $pokemon['image'] }}" alt="{{ $pokemon['name'] }}"
                                     style="width:100px; height:100px; object-fit:contain; margin:18px auto 0;">
                                 <div class="card-body p-3">
