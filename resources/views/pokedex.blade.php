@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@auth
 <body class="bg-light">
     <div class="container-fluid" style="padding-left:50px; margin-left:0px;">
         <div class="row" style="height: 85vh; width: 100%;">
@@ -36,7 +37,7 @@
                         <div class="progress" style="height: 28px; background-color: #eee;">
                                 <div style="position: relative; width: 100%; height: 100%;">
                                     <div id="found-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%; height: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="151"></div>
-                                    <span id="found-progress-text" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1em; color: #ffff; pointer-events: none;">0 / 151 Found</span>
+                                    <span id="found-progress-text" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5em; color: #ffff; pointer-events: none;">0 / 151 Found</span>
                                 </div>
                         </div>
                     </div>
@@ -79,4 +80,14 @@
     <script src="{{ asset('js/pokemondetails.js') }}"></script>
     <script src="{{ asset('js/pokemonfavorites.js') }}"></script>
     <script src="{{ asset('js/pokemonfilter.js') }}"></script>
+@endauth
+@guest
+<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
+    <div class="card shadow-lg p-4" style="max-width: 480px;">
+        <h1 class="mb-3 text-center" style="font-size:2.2em; font-weight:bold;">Welcome to MyPokédex!</h1>
+        <p class="mb-4 text-center" style="font-size:1.2em;">Created by David Geuchenmeier</p>
+        <p class="text-center">Please <a href="{{ route('login') }}" class="btn btn-primary">login</a> or <a href="{{ route('register') }}" class="btn btn-primary">Register</a> to access your Pokédex.</p>
+    </div>
+</div>
+@endguest
 @endsection
