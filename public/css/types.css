@@ -34,7 +34,6 @@
     --type-rock: #B6A136;
     --type-ghost: #735797;
     --type-dragon: #6F35FC;
-    --type-dark: #705746;
     --type-steel: #B7B7CE;
     --type-fairy: #D685AD;
 }
@@ -62,6 +61,5 @@
 .type-rock { background: var(--type-rock); }
 .type-ghost { background: var(--type-ghost); }
 .type-dragon { background: var(--type-dragon); }
-.type-dark { background: var(--type-dark); }
 .type-steel { background: var(--type-steel); }
 .type-fairy { background: var(--type-fairy); }
