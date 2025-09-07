@@ -25,6 +25,13 @@
                         <a class="nav-link active" aria-current="page" href="{{ url('/') }}">My Pok&eacute;dex</a>
                     </li>
                 </ul>
+                <div class="mx-auto d-flex align-items-center justify-content-center" style="min-width:220px;">
+                    @auth
+                        <span class="badge rounded-pill text-white" style="font-size:1.2em; padding:12px 28px; box-shadow:0 2px 8px #eee; background: linear-gradient(105deg, #e53935 0%, #e53935 40%, #1e88e5 60%, #1e88e5 100%); border: 2px solid #fff;">
+                            {{ Auth::user()->name }}'s Pokédex
+                        </span>
+                    @endauth
+                </div>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @guest
                         <li class="nav-item">

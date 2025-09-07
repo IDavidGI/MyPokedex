@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="height: 95%; overflow-y: auto; border: 3px solid grey; padding: 16px;">
+                <div style="height: 95%; overflow-y: auto; border: 2px solid rgb(196, 196, 196); padding: 16px;">
                     <div class="row row-cols-2 row-cols-md-5 g-2" style="margin: 0px 8px 8px 8px;" id="pokemon-grid">
                     @foreach ($pokemonData as $index => $pokemon)
                         <div class="col">
