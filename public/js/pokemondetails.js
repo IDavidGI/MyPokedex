@@ -60,14 +60,37 @@ async function fetchDetails(url) {
     }
 }
 
-// Here i add event listeners to each Pokémon item to trigger details fetch
+//function to update the progress bar
+const foundKey = 'foundPokemon151';
+let foundPokemon = JSON.parse(localStorage.getItem(foundKey) || '[]');
+
+function updateProgressBar() {
+    const bar = document.getElementById('found-progress-bar');
+    const foundCount = foundPokemon.length;
+    const percent = Math.round((foundCount / 151) * 100);
+    bar.style.width = percent + '%';
+    bar.setAttribute('aria-valuenow', foundCount);
+    bar.textContent = `${foundCount} / 151 Found`;
+    bar.classList.toggle('bg-success', foundCount > 0);
+    bar.classList.toggle('bg-secondary', foundCount === 0);
+}
+
 document.querySelectorAll('.pokemon-list-item').forEach(item => {
     item.addEventListener('click', function () {
         fetchDetails(this.dataset.url);
+        const pokeName = this.querySelector('.card-title').textContent.trim().toLowerCase();
+        //after fetching details, add to found list if not already present
+        if (!foundPokemon.includes(pokeName)) {
+            foundPokemon.push(pokeName);
+            localStorage.setItem(foundKey, JSON.stringify(foundPokemon));
+            updateProgressBar();
+        }
     });
 });
 
-// Fetch and display the types of the pokemon
+document.addEventListener('DOMContentLoaded', updateProgressBar);
+
+//fetch and display the types of the pokemon
 document.querySelectorAll('.pokemon-list-item').forEach(item => {
     const typeDiv = item.querySelector('.pokemon-type-list');
     const url = item.getAttribute('data-url');
@@ -102,7 +125,7 @@ function setupFavoriteButtonListeners() {
 
 window.onload = setupFavoriteButtonListeners;
 
-// --- Search and Type Filter Logic ---
+//searching and filtering functionality on type and name
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('pokemon-search');
     const typeMenu = document.getElementById('type-filter-menu');

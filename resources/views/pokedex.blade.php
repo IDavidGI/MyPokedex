@@ -46,7 +46,7 @@
                 <div class="d-flex align-items-center mb-3" style="gap: 16px;">
                     <input id="pokemon-search" type="text" class="form-control" placeholder="Search Pokémon by name..." style="max-width: 220px;">
                     <div class="dropdown">
-                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             Filter by Type
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="typeDropdown" id="type-filter-menu">
@@ -69,6 +69,11 @@
                             <li><a class="dropdown-item type-filter-option" href="#" data-type="steel">Steel</a></li>
                             <li><a class="dropdown-item type-filter-option" href="#" data-type="fairy">Fairy</a></li>
                         </ul>
+                    </div>
+                    <div class="flex-grow-1 ms-3" style="min-width:200px; max-width:700px;">
+                        <div class="progress" style="height: 28px; background-color: #eee;">
+                                <div id="found-progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%; font-weight: bold; font-size: 1em;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="151">0 / 151 Found</div>
+                        </div>
                     </div>
                 </div>
                 <div style="height: 95%; overflow-y: auto; border: 3px solid grey; padding: 16px;">
