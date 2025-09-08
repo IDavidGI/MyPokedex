@@ -2,6 +2,8 @@
 
 A web-based Pokédex for the original 151 Pokémon, built with Laravel, Bootstrap, and PokéAPI. Users can register, log in, favorite Pokémon, and track which Pokémon they've found. Progress is shown with a dynamic progress bar, and all data is stored per user.
 
+> **Note:** This repository is public for viewing only. Contributions are not accepted.
+
 ## Features
 - Display the original 151 Pokémon with images and types
 - User registration and login
@@ -12,14 +14,6 @@ A web-based Pokédex for the original 151 Pokémon, built with Laravel, Bootstra
 - View Pokémon details and evolution chain
 - Responsive, modern UI with Bootstrap
 - Data stored in SQLite or MySQL
-
-## Screenshots
-
-### Welcome Page
-![Welcome Page](screenshots/welcome_screen.png)
-
-### Pokédex Page
-![Pokédex Page](screenshots/pokedex_screen.png)
 
 ## Getting Started
 
