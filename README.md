@@ -82,9 +82,6 @@ A web-based Pokédex for the original 151 Pokémon, built with Laravel, Bootstra
 - Can be deployed to platforms like Heroku, Render.com, or any PHP hosting.
 - For SQLite, no extra setup needed. For MySQL, update `.env` accordingly.
 
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
 ## License
 MIT
 
