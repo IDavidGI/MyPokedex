@@ -4,6 +4,15 @@ A web-based Pokédex for the original 151 Pokémon, built with Laravel, Bootstra
 
 > **Note:** This repository is public for viewing only. Contributions are not accepted.
 
+# Screenshots
+Below are screenshots of the MyPokédex application:
+
+## Welcome Screen
+![Welcome Screen](screenshots/welcome_screen.png)
+
+## Main Pokédex Screen
+![Main Pokédex Screen](screenshots/pokedex_screen.png)
+
 ## Features
 - Display the original 151 Pokémon with images and types
 - User registration and login
