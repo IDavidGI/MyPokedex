@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('password');
+            $table->integer('found_count')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

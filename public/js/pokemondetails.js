@@ -1,16 +1,29 @@
 const detailsDiv = document.getElementById('pokemon-details');
 
 document.querySelectorAll('.pokemon-list-item').forEach(item => {
-    item.addEventListener('click', function () {
+    item.addEventListener('click', async function () {
         fetchDetails(this.dataset.url);
         const pokeName = this.querySelector('.card-title').textContent.trim().toLowerCase();
-        //after fetching details, add to found list if not already present
-        if (!foundPokemon.includes(pokeName)) {
-            foundPokemon.push(pokeName);
-            localStorage.setItem(foundKey, JSON.stringify(foundPokemon));
-            updateProgressBar();
-        }
+        // Mark as found in backend if not already found
+        try {
+            const res = await fetch('/found', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': getCsrfToken()
+                },
+                body: JSON.stringify({ pokemon_name: pokeName })
+            });
+            if (res.ok) {
+                updateProgressBar();
+            }
+        } catch {}
     });
+// Helper to get CSRF token from meta tag
+function getCsrfToken() {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    return meta ? meta.getAttribute('content') : '';
+}
 });
 
 async function fetchDetails(url) {
@@ -74,21 +87,24 @@ async function fetchDetails(url) {
 }
 
 //function to update the progress bar
-const foundKey = 'foundPokemon151';
-let foundPokemon = JSON.parse(localStorage.getItem(foundKey) || '[]');
-
-function updateProgressBar() {
-    const bar = document.getElementById('found-progress-bar');
-    const foundCount = foundPokemon.length;
-    const percent = Math.round((foundCount / 151) * 100);
-    bar.style.width = percent + '%';
-    bar.setAttribute('aria-valuenow', foundCount);
-    bar.classList.toggle('bg-success', foundCount > 0);
-    bar.classList.toggle('bg-secondary', foundCount === 0);
-    var textSpan = document.getElementById('found-progress-text');
-    if (textSpan) {
-        textSpan.textContent = `${foundCount} / 151 Found`;
-    }
+async function updateProgressBar() {
+    try {
+        const res = await fetch('/found');
+        if (res.ok) {
+            const foundList = await res.json();
+            const foundCount = Array.isArray(foundList) ? foundList.length : 0;
+            const bar = document.getElementById('found-progress-bar');
+            const percent = Math.round((foundCount / 151) * 100);
+            bar.style.width = percent + '%';
+            bar.setAttribute('aria-valuenow', foundCount);
+            bar.classList.toggle('bg-success', foundCount > 0);
+            bar.classList.toggle('bg-secondary', foundCount === 0);
+            var textSpan = document.getElementById('found-progress-text');
+            if (textSpan) {
+                textSpan.textContent = `${foundCount} / 151 Found`;
+            }
+        }
+    } catch {}
 }
 
 document.addEventListener('DOMContentLoaded', updateProgressBar);

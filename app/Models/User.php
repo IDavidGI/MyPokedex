@@ -16,6 +16,11 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class);
     }
 
+    public function foundPokemon()
+    {
+        return $this->hasMany(FoundPokemon::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'found_count',
     ];
 
     /**
@@ -47,6 +53,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'found_count' => 'integer',
         ];
     }
 };
